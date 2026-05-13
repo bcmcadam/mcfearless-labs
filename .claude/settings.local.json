@@ -1,0 +1,28 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:api.anthropic.com)",
+      "Bash(mkdir -p /tmp/design-extract)",
+      "Bash(cp /Users/bmac/.claude/projects/-Users-bmac-Desktop-source-mcfearless-labs/ad3a853f-0b44-451f-aa71-171690181181/tool-results/webfetch-1778679599922-tsgt9v.bin /tmp/design-extract/design.tar.gz)",
+      "Read(//tmp/**)",
+      "Bash(tar -tzf design.tar.gz)",
+      "Read(//private/tmp/design-extract/**)",
+      "Bash(tar -xzf design.tar.gz)",
+      "Bash(npm --version)",
+      "Bash(npx --yes create-next-app@latest . --typescript --app --no-tailwind --no-eslint --no-src-dir --no-turbopack --import-alias \"@/*\" --use-npm --skip-install)",
+      "Bash(cp /tmp/design-extract/mcfearless-labs/project/bootjuice-mascot.svg /Users/bmac/Desktop/source/mcfearless-labs/public/bootjuice-mascot.svg)",
+      "Bash(rm /Users/bmac/Desktop/source/mcfearless-labs/public/file.svg /Users/bmac/Desktop/source/mcfearless-labs/public/globe.svg /Users/bmac/Desktop/source/mcfearless-labs/public/next.svg /Users/bmac/Desktop/source/mcfearless-labs/public/vercel.svg /Users/bmac/Desktop/source/mcfearless-labs/public/window.svg)",
+      "Bash(rm /Users/bmac/Desktop/source/mcfearless-labs/app/page.module.css)",
+      "Bash(mkdir -p /Users/bmac/Desktop/source/mcfearless-labs/app/components /Users/bmac/Desktop/source/mcfearless-labs/app/lib)",
+      "Bash(npm install *)",
+      "Bash(npm run *)",
+      "Bash(curl -s -o /dev/null -w \"HTTP %{http_code}\\\\n\" http://localhost:3000)",
+      "Bash(curl -s http://localhost:3000)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" http://localhost:3000/bootjuice-mascot.svg)",
+      "Bash(curl -s http://localhost:3000/bootjuice-mascot.svg)",
+      "Bash(curl -s \"http://localhost:3000/bootjuice-mascot.svg?v=2\")",
+      "Bash(curl -s http://localhost:3000/)",
+      "Bash(npx tsc *)"
+    ]
+  }
+}
