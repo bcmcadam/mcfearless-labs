@@ -250,7 +250,7 @@ export function Hero({ variant = "solid" }: { variant?: HeroTitleVariant }) {
         </h1>
 
         <p className="hero-sub">
-          You&apos;re geting your own full-stack developer who can build basically anything you
+          You&apos;re getting your own full-stack developer who can build basically anything you
           can describe — real apps, AI tools, dashboards, the works. Just me,
           working closely with you, building fast.
         </p>
