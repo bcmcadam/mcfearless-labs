@@ -250,15 +250,11 @@ export function Hero({ variant = "solid" }: { variant?: HeroTitleVariant }) {
         </h1>
 
         <p className="hero-sub">
-          A solo full-stack developer for companies who need a polished product,
-          fast. Design, code, deploy.
+          You&apos;re geting your own full-stack developer who can build basically anything you
+          can describe — real apps, AI tools, dashboards, the works. Just me,
+          working closely with you, building fast.
         </p>
 
-        <p className="hero-sub">
-        One person. Zero
-          hand-offs.
-        </p>
-   
 
         <div className="hero-cta">
           <Magnetic as="a" href="#contact" strength={12}>
