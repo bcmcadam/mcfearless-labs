@@ -434,8 +434,8 @@ function WorkVisual({ id }: { id: WorkItem["id"] }) {
 }
 
 function WorkCard({ item }: { item: WorkItem }) {
-  const ref = useRef<HTMLAnchorElement>(null);
-  const onMove = (e: PointerEvent<HTMLAnchorElement>) => {
+  const ref = useRef<HTMLDivElement>(null);
+  const onMove = (e: PointerEvent<HTMLDivElement>) => {
     const el = ref.current;
     if (!el) return;
     const r = el.getBoundingClientRect();
@@ -451,9 +451,8 @@ function WorkCard({ item }: { item: WorkItem }) {
 
   return (
     <article className={`work-card span-${item.span}`}>
-      <a
+      <div
         ref={ref}
-        href="#"
         className="work-link"
         style={{ ["--card-accent" as string]: item.accent } as CSSProperties}
         onPointerMove={onMove}
@@ -469,21 +468,8 @@ function WorkCard({ item }: { item: WorkItem }) {
           </div>
           <h3 className="work-title">{item.title}</h3>
           <p className="work-blurb">{item.blurb}</p>
-          <div className="work-foot">
-            <span className="mono">Case study</span>
-            <span className="work-arrow">
-              <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-                <path
-                  d="M3 11L11 3M11 3H5M11 3v6"
-                  stroke="currentColor"
-                  strokeWidth="1.4"
-                  strokeLinecap="round"
-                />
-              </svg>
-            </span>
-          </div>
         </div>
-      </a>
+      </div>
     </article>
   );
 }

@@ -85,15 +85,13 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 }
 /* === HERO === */
 .hero{position:relative;min-height:100vh;padding:160px var(--pad) 96px;display:flex;flex-direction:column;justify-content:center;overflow:hidden}
-.hero-orb{position:absolute;right:-18vw;top:50%;transform:translateY(-50%);width:62vw;height:62vw;max-width:760px;max-height:760px;border-radius:50%;
-  background:
-    radial-gradient(circle at 32% 28%, #fff 0%, #cfd2d7 6%, #6a6d73 26%, #1d1e22 52%, #08090b 78%),
-    conic-gradient(from 220deg, #fff, #6a6d73, #1d1e22, #fff, #1d1e22, #fff);
-  background-blend-mode:overlay;
-  box-shadow:inset -30px -40px 80px rgba(0,0,0,.65), inset 20px 20px 60px rgba(255,255,255,.14), 0 60px 220px var(--accent-glow);
-  pointer-events:none;
-  z-index:1;
-  opacity:.95;
+.hero-globe{position:absolute;right:-9vw;top:50%;transform:translateY(-50%);width:66vw;height:66vw;max-width:820px;max-height:820px;pointer-events:none;z-index:1;opacity:.92}
+.hero-globe .hg-sweep{animation:hgSweep 14s linear infinite}
+.hero-globe .hg-meridians{animation:hgRotate 60s linear infinite}
+@keyframes hgSweep{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+@keyframes hgRotate{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+@media (prefers-reduced-motion: reduce){
+  .hero-globe .hg-sweep,.hero-globe .hg-meridians{animation:none}
 }
 .hero-vignette{position:absolute;inset:0;pointer-events:none;background:
   linear-gradient(90deg, var(--bg) 0%, transparent 30%, transparent 55%, color-mix(in oklab, var(--bg) 70%, transparent) 100%);

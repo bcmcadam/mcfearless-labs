@@ -22,7 +22,15 @@
       "Bash(curl -s http://localhost:3000/bootjuice-mascot.svg)",
       "Bash(curl -s \"http://localhost:3000/bootjuice-mascot.svg?v=2\")",
       "Bash(curl -s http://localhost:3000/)",
-      "Bash(npx tsc *)"
+      "Bash(npx tsc *)",
+      "Bash(git config *)",
+      "Bash(echo \"global: $\\(git config --global user.email\\)\")",
+      "Bash(echo \"local:  $\\(git config user.email\\)\")",
+      "Read(//private/tmp/mcfearless-design/**)",
+      "Bash(tar -xf bundle.tar)",
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)",
+      "Bash(rm /Users/bmac/Desktop/source/mcfearless-labs/.git/index.lock)"
     ]
   }
 }

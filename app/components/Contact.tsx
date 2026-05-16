@@ -40,9 +40,9 @@ export function Contact() {
           </p>
 
           <div className="contact-channels">
-            <a className="channel" href="mailto:hello@mcfearless.dev">
+            <a className="channel" href="mailto:byron@mcfearless.dev">
               <span className="mono dim">email</span>
-              <span className="channel-v">hello@mcfearless.dev</span>
+              <span className="channel-v">byron@mcfearless.dev</span>
             </a>
             <a className="channel" href="#">
               <span className="mono dim">cal.com</span>
@@ -150,7 +150,7 @@ export function Contact() {
               <h3 className="sent-h">Got it.</h3>
               <p className="sent-b">
                 I&apos;ll reply from{" "}
-                <span className="mono">hello@mcfearless.dev</span> within a
+                <span className="mono">byron@mcfearless.dev</span> within a
                 business day. Check spam if it&apos;s quiet.
               </p>
               <button
@@ -181,7 +181,7 @@ export function Contact() {
           </div>
         </div>
         <div className="foot-r mono dim">
-          <span>© 2026 · Built by hand · last deploy 2 days ago</span>
+          <span>© 2026 · last deploy 2 days ago</span>
         </div>
       </footer>
     </section>
