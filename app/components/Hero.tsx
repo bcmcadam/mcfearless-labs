@@ -4,6 +4,8 @@ import { Magnetic } from "./Cursor";
 
 export type HeroTitleVariant = "solid" | "editorial" | "outline";
 
+const round2 = (n: number) => Math.round(n * 100) / 100;
+
 function HeroGlobe() {
   const ticks = [];
   for (let i = 0; i < 60; i++) {
@@ -11,10 +13,10 @@ function HeroGlobe() {
     const major = i % 5 === 0;
     const r1 = 348;
     const r2 = major ? 332 : 340;
-    const x1 = 400 + r1 * Math.cos(a);
-    const y1 = 400 + r1 * Math.sin(a);
-    const x2 = 400 + r2 * Math.cos(a);
-    const y2 = 400 + r2 * Math.sin(a);
+    const x1 = round2(400 + r1 * Math.cos(a));
+    const y1 = round2(400 + r1 * Math.sin(a));
+    const x2 = round2(400 + r2 * Math.cos(a));
+    const y2 = round2(400 + r2 * Math.sin(a));
     ticks.push(
       <line
         key={i}
