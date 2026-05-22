@@ -2,23 +2,45 @@
 
 import { FormEvent, useState } from "react";
 
-type Stage = "idle" | "sending" | "sent";
+type Stage = "idle" | "sending" | "sent" | "error";
 
 const BUDGETS = ["< $1k", "$1–10k", "$40–90k", "$90k+", "retainer"] as const;
 
 export function Contact() {
   const [stage, setStage] = useState<Stage>("idle");
+  const [errorMsg, setErrorMsg] = useState<string>("");
   const [form, setForm] = useState({
     name: "",
     email: "",
     scope: "",
     budget: "",
+    website: "", // honeypot — should always stay empty
   });
 
-  const submit = (e: FormEvent<HTMLFormElement>) => {
+  const submit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setStage("sending");
-    setTimeout(() => setStage("sent"), 900);
+    setErrorMsg("");
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify(form),
+      });
+      const data = (await res.json().catch(() => ({}))) as {
+        ok?: boolean;
+        error?: string;
+      };
+      if (res.ok && data.ok) {
+        setStage("sent");
+      } else {
+        setStage("error");
+        setErrorMsg(data.error ?? "Could not send right now.");
+      }
+    } catch {
+      setStage("error");
+      setErrorMsg("Network error. Try again or email me directly.");
+    }
   };
 
   const valid =
@@ -58,6 +80,24 @@ export function Contact() {
         <form className="contact-form" onSubmit={submit}>
           {stage !== "sent" && (
             <>
+              <input
+                type="text"
+                name="website"
+                tabIndex={-1}
+                autoComplete="off"
+                aria-hidden="true"
+                value={form.website}
+                onChange={(e) =>
+                  setForm({ ...form, website: e.target.value })
+                }
+                style={{
+                  position: "absolute",
+                  left: "-9999px",
+                  width: 1,
+                  height: 1,
+                  opacity: 0,
+                }}
+              />
               <label className="field">
                 <span className="field-l mono">your name</span>
                 <input
@@ -132,6 +172,17 @@ export function Contact() {
                   PGP available · NDAs gladly signed
                 </span>
               </div>
+              {stage === "error" && (
+                <p
+                  role="alert"
+                  className="mono"
+                  style={{ color: "#ff6b6b", marginTop: 8, fontSize: 12 }}
+                >
+                  {errorMsg} You can also email{" "}
+                  <a href="mailto:byron@mcfearless.dev">byron@mcfearless.dev</a>
+                  .
+                </p>
+              )}
             </>
           )}
           {stage === "sent" && (
@@ -157,8 +208,15 @@ export function Contact() {
                 className="btn btn-ghost"
                 type="button"
                 onClick={() => {
-                  setForm({ name: "", email: "", scope: "", budget: "" });
+                  setForm({
+                    name: "",
+                    email: "",
+                    scope: "",
+                    budget: "",
+                    website: "",
+                  });
                   setStage("idle");
+                  setErrorMsg("");
                 }}
               >
                 Send another
