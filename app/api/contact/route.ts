@@ -4,7 +4,7 @@ export const runtime = "nodejs";
 
 const TO_ADDRESS = process.env.CONTACT_TO ?? "byron@mcfearless.dev";
 const FROM_ADDRESS =
-  process.env.CONTACT_FROM ?? "McFearless Labs <onboarding@resend.dev>";
+  process.env.CONTACT_FROM ?? "McFearless Labs <noreply@mcfearless.dev>";
 
 type ContactBody = {
   name?: string;
